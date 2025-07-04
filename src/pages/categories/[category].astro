@@ -33,14 +33,44 @@ export function getStaticPaths() {
 }
 
 const { category } = Astro.params;
+
+// Create category-specific descriptions
+const categoryDescriptions = {
+  'all': 'Browse all 1500+ curated APIs for developers. Find APIs for any project across all categories including gaming, AI, productivity, design, and more.',
+  'art': 'Discover art and design APIs for creative projects. Generate artwork, manipulate images, access design resources and creative tools.',
+  'audio': 'Find audio processing APIs for music, speech, and sound applications. Audio analysis, music streaming, and sound generation tools.',
+  'code': 'Developer-focused APIs for code management, version control, and programming tools. GitHub, GitLab, and development utilities.',
+  'copywriting': 'AI-powered copywriting and content generation APIs. Create marketing copy, blog posts, and written content programmatically.',
+  'design': 'Design and graphics APIs for UI/UX projects. Access design systems, icons, fonts, and visual design tools.',
+  'developer': 'Essential developer APIs and tools. Code utilities, debugging, testing, and development workflow APIs.',
+  'education': 'Educational APIs for learning platforms and academic resources. Course content, student management, and educational tools.',
+  'enterprise': 'Business and enterprise APIs for corporate applications. CRM, ERP, business intelligence, and enterprise solutions.',
+  'fashion': 'Fashion and style APIs for e-commerce and trend analysis. Product catalogs, style recommendations, and fashion data.',
+  'gaming': 'Gaming APIs for game developers. Game engines, player statistics, leaderboards, and gaming platform integrations.',
+  'health': 'Healthcare and wellness APIs. Medical data, fitness tracking, health monitoring, and wellness applications.',
+  'legal': 'Legal and compliance APIs for legal tech applications. Document processing, legal research, and compliance tools.',
+  'llm': 'Large Language Model APIs for AI applications. GPT, Claude, and other LLM services for natural language processing.',
+  'music': 'Music APIs for audio streaming and music applications. Spotify, Apple Music, and music discovery services.',
+  'nocode': 'No-code and low-code platform APIs. Visual development tools, workflow automation, and citizen developer resources.',
+  'photos': 'Photography and image APIs. Image processing, photo editing, stock photos, and visual content management.',
+  'productivity': 'Productivity APIs for workflow optimization. Task management, calendar, notes, and productivity tool integrations.',
+  'prompts': 'AI prompt engineering and template APIs. Prompt libraries, AI interaction tools, and conversation management.',
+  'research': 'Research and academic APIs. Scientific data, research papers, academic databases, and scholarly resources.',
+  'seo': 'SEO and digital marketing APIs. Search optimization, analytics, keyword research, and marketing automation tools.',
+  'social': 'Social media APIs for platform integration. Twitter, Facebook, Instagram, and social networking tools.',
+  'xtras': 'Additional and miscellaneous APIs. Unique tools, utilities, and specialized APIs that don\'t fit other categories.'
+};
+
+const description = categoryDescriptions[category] || `Explore ${category} APIs for developers. Curated collection of APIs and tools for ${category}-related projects and applications.`;
 ---
 
 <Layout
   site=`Geek APIs - ${category}`
   title="Geek APIs for Developers"
   tagline="MASSIVE list of 1500+ Geek APIs for developers."
+  description={description}
 >
   <main>
-      <Dashboard client:load category=`${category}` />
+      <Dashboard client:idle category=`${category}` />
   </main>
 </Layout>

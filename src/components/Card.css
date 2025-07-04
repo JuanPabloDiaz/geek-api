@@ -17,6 +17,13 @@
   font-family: var(--body-copy);
 }
 
+@media (max-width: 480px) {
+  .link-card {
+    height: auto;
+    min-height: 9rem;
+  }
+}
+
 .link-card > a {
   width: 100%;
   text-decoration: none;
@@ -62,6 +69,15 @@ p.distribution {
   -webkit-box-orient: vertical;
 }
 
+@media (max-width: 480px) {
+  .card-description {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    max-height: 4.2em;
+  }
+}
+
 span.tag {
   background-color: var(--background-selected);
   padding: calc(0.25rem - 1px) calc(0.5rem - 1px);
@@ -74,6 +90,14 @@ span.tag {
   font-family: var(--body-copy);
 }
 
+@media (max-width: 480px) {
+  span.tag {
+    padding: calc(0.15rem - 1px) calc(0.35rem - 1px);
+    margin-top: var(--spacing-06);
+    font-size: 0.65rem;
+  }
+}
+
 span.tag-new {
   background-color: var(--background-selected);
   padding: calc(0.25rem - 1px) calc(0.5rem - 1px);
@@ -84,6 +108,18 @@ span.tag-new {
   font-size: var(--desktop-caption);
   line-height: var(--lh-desktop-caption);
   font-family: var(--body-copy);
+}
+
+@media (max-width: 480px) {
+  span.tag-new {
+    padding: calc(0.15rem - 1px) calc(0.35rem - 1px);
+    margin-top: var(--spacing-06);
+    font-size: 0.65rem;
+  }
+
+  p.distribution {
+    font-size: 0.75rem;
+  }
 }
 
 span.tag-https {

@@ -1,7 +1,9 @@
 {
-  "name": "astro-api",
-  "version": "2.05.0",
-  "rhyver": "v2.25Q1.05.0",
+  "name": "geek-api",
+  "version": "1.0.0",
+  "description": "Geek API",
+  "author": "Juan Diaz",
+  "license": "MIT",
   "type": "module",
   "private": false,
   "main": "src/data/resources.json",
@@ -14,16 +16,16 @@
     "build": "astro build",
     "preview": "astro dev",
     "astro": "astro",
-    "clean": "rm -rf .astro node_modules dist",
+    "clean": "rm -rf .astro node_modules dist && pnpm install",
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.3.4",
+    "@astrojs/netlify": "^6.4.1",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/react": "^4.3.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "astro": "^5.9.2",
+    "astro": "^5.11.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

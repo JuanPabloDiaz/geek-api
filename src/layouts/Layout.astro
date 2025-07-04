@@ -6,9 +6,10 @@ export interface Props {
     site: string;
     title: string;
     tagline: string;
+    description: string;
 }
 
-const { site, title, tagline } = Astro.props;
+const { site, title, tagline, description } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,11 +17,16 @@ const { site, title, tagline } = Astro.props;
     <head>
         <ClientRouter />
         <meta charset="UTF-8" />
+        <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/api.png" />
         <meta name="generator" content={Astro.generator} />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
         <title>{site} — {title}</title>
         <meta property="og:title" content="Geek APIs" />
+        <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://geek-api.jpdiaz.dev" />
 
@@ -46,26 +52,30 @@ const { site, title, tagline } = Astro.props;
                             <span class="terminal-btn"></span>
                             <span class="terminal-btn"></span>
                         </div>
-                        <div class="terminal-title-container">
+                        <div class="terminal-logo-container">
                             <a href="/" class="terminal-header-title">
                                 <h3>{site} </h3>
                             </a>
-                            <div class="terminal-title">{tagline}</div>
+                        </div>
+                        <div class="terminal-search-container">
+                            <div class="btn-group">
+                                <button
+                                    class="theme-toggle"
+                                    id="theme-toggle"
+                                    title="Toggles light & dark"
+                                    aria-label="auto"
+                                    aria-live="polite"
+                                >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path fill="currentColor" fill-rule="evenodd" d="M277.333 405.333v85.333h-42.667v-85.333zm99.346-58.824l60.34 60.34l-30.17 30.17l-60.34-60.34zm-241.359 0l30.17 30.17l-60.34 60.34l-30.17-30.17zM256 139.353c64.422 0 116.647 52.224 116.647 116.647c0 64.422-52.225 116.647-116.647 116.647A116.427 116.427 0 0 1 139.352 256c0-64.423 52.225-116.647 116.648-116.647m0 42.666c-40.859 0-73.981 33.123-73.981 74.062a73.76 73.76 0 0 0 21.603 52.296c13.867 13.867 32.685 21.64 52.378 21.603zm234.666 52.647v42.667h-85.333v-42.667zm-384 0v42.667H21.333v-42.667zM105.15 74.98l60.34 60.34l-30.17 30.17l-60.34-60.34zm301.7 0l30.169 30.17l-60.34 60.34l-30.17-30.17zM277.332 21.333v85.333h-42.667V21.333z"/></svg>
+                                </button>
+                            </div>
                             <div class="terminal-search">
-                                <SearchBar client:load />
+                                <SearchBar client:idle />
                             </div>
                         </div>
-                        <div class="btn-group">
-                            <button
-                                class="theme-toggle"
-                                id="theme-toggle"
-                                title="Toggles light & dark"
-                                aria-label="auto"
-                                aria-live="polite"
-                            >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path fill="currentColor" fill-rule="evenodd" d="M277.333 405.333v85.333h-42.667v-85.333zm99.346-58.824l60.34 60.34l-30.17 30.17l-60.34-60.34zm-241.359 0l30.17 30.17l-60.34 60.34l-30.17-30.17zM256 139.353c64.422 0 116.647 52.224 116.647 116.647c0 64.422-52.225 116.647-116.647 116.647A116.427 116.427 0 0 1 139.352 256c0-64.423 52.225-116.647 116.648-116.647m0 42.666c-40.859 0-73.981 33.123-73.981 74.062a73.76 73.76 0 0 0 21.603 52.296c13.867 13.867 32.685 21.64 52.378 21.603zm234.666 52.647v42.667h-85.333v-42.667zm-384 0v42.667H21.333v-42.667zM105.15 74.98l60.34 60.34l-30.17 30.17l-60.34-60.34zm301.7 0l30.169 30.17l-60.34 60.34l-30.17-30.17zM277.332 21.333v85.333h-42.667V21.333z"/></svg>
-                            </button>
-                        </div>
+                    </div>
+                    <div class="terminal-tagline-container">
+                        <div class="terminal-title">{tagline}</div>
                     </div>
                 </header>
             </div>
@@ -95,18 +105,6 @@ const { site, title, tagline } = Astro.props;
     </body>
 </html>
 <style is:global>
-    @font-face {
-        font-family: "Fira Code";
-        font-style: normal;
-        font-weight: 400;
-        src: url("https://fonts.gstatic.com/s/firacode/v21/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sJVD7MOzlojwUKaJO.woff2") format("woff2");
-    }
-    @font-face {
-        font-family: "Fira Code";
-        font-style: normal;
-        font-weight: 700;
-        src: url("https://fonts.gstatic.com/s/firacode/v21/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_NprJVD7MOzlojwUKaJO.woff2") format("woff2");
-    }
     :root {
         /* Old-school developer theme */
         --background: #002b36;
@@ -140,17 +138,29 @@ const { site, title, tagline } = Astro.props;
     }
     .terminal-container {
         max-width: 1400px;
-        margin: 2rem auto;
         border: 1px solid var(--accent);
+        margin: 0rem auto;
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
     }
 
+    @media (min-width: 768px) {
+        .terminal-container {
+            margin: 2rem auto;
+        }
+    }
+
     .terminal-content {
-        padding: var(--spacing-06);
+        padding: var(--spacing-04);
         background-color: var(--background);
         min-height: 50vh;
+    }
+
+    @media (min-width: 768px) {
+        .terminal-content {
+            padding: var(--spacing-06);
+        }
     }
     header {
         margin-bottom: 0;
@@ -221,8 +231,8 @@ const { site, title, tagline } = Astro.props;
         z-index: 999;
         --icon-fill: var(--icon-secondary);
         --icon-fill-hover: var(--icon-secondary);
-        width: var(--spacing-09);
-        height: var(--spacing-09);
+        width: var(--spacing-07);
+        height: var(--spacing-07);
         background: none;
         border: none;
         padding: var(--spacing-00);
@@ -234,6 +244,11 @@ const { site, title, tagline } = Astro.props;
         justify-content: center;
         align-items: center;
         border-radius: var(--spacing-02);
+        
+        @media (min-width: 768px) {
+            width: var(--spacing-09);
+            height: var(--spacing-09);
+        }
 
         @nest [data-theme="dark"] & {
             --icon-fill: var(--icon-secondary);
@@ -241,16 +256,23 @@ const { site, title, tagline } = Astro.props;
         }
     }
     .terminal-footer {
-        padding: 1rem;
+        padding: 0.75rem;
         text-align: center;
         font-weight: normal;
         font-style: normal;
         color: var(--text-secondary);
-        font-size: var(--desktop-body-sm);
+        font-size: 0.75rem;
         line-height: var(--lh-desktop-body);
         font-family: var(--body-copy);
         background-color: var(--background-secondary);
         border-top: 1px solid var(--accent);
+    }
+
+    @media (min-width: 768px) {
+        .terminal-footer {
+            padding: 1rem;
+            font-size: var(--desktop-body-sm);
+        }
     }
 
     .terminal-cursor {
@@ -266,13 +288,17 @@ const { site, title, tagline } = Astro.props;
 
     @media (max-width: 30rem) {
         main {
-            margin: auto var(--spacing-06);
+            margin: auto var(--spacing-03);
         }
         .floating-nav {
-            padding: var(--spacing-06) var(--spacing-06);
+            padding: var(--spacing-04) var(--spacing-04);
         }
         .container {
-            margin: var(--spacing-06);
+            margin: var(--spacing-04);
+        }
+        .terminal-container {
+            margin: 0.5rem auto;
+            border-radius: 4px;
         }
     }
 
@@ -281,47 +307,131 @@ const { site, title, tagline } = Astro.props;
         position: sticky;
         top: 0;
         z-index: 1000;
+        margin-bottom: 0;
     }
 
     .terminal-header {
         display: flex;
         flex-direction: column;
-        padding: 0.75rem 1rem;
+        padding: 0.5rem 0.75rem 0;
         background-color: var(--background-secondary);
         border-top-left-radius: 0.5rem;
         border-top-right-radius: 0.5rem;
-        border-bottom: 1px solid var(--accent);
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-header {
+            padding: 0.5rem 0 0;
+        }
     }
 
     .terminal-header-top {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         width: 100%;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0;
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-header-top {
+            justify-content: space-between;
+            padding: 0.25rem 0;
+        }
     }
 
-    .terminal-title-container {
+    .terminal-logo-container {
         display: flex;
         align-items: center;
-        flex: 1;
+        padding: 0.5rem 0;
+    }
+    
+    .terminal-search-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-logo-container {
+            flex: 0 0 auto;
+            margin-left: 1rem;
+        }
+        
+        .terminal-search-container {
+            flex: 0 0 auto;
+            margin-right: 1rem;
+        }
+    }
+    
+    .terminal-tagline-container {
+        display: flex;
+        padding: 0
+        justify-content: center;
+    }
+    
+    @media (max-width: 767px) {
+        .terminal-tagline-container {
+            display: none;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-tagline-container {
+            padding: 0;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
     }
 
     .terminal-search {
-        width: 20%;
-        padding: 1rem;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-search {
+            width: auto;
+            min-width: 200px;
+            padding: 0 0.5rem;
+        }
+    }
+    
+    .terminal-search-container .btn-group {
+        margin-right: 0.25rem;
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-search-container .btn-group {
+            margin-right: 0.5rem;
+        }
     }
 
     .terminal-controls {
         display: flex;
-        gap: 0.5rem;
+        gap: 0.4rem;
+        padding: 0.5rem 0.75rem;
     }
 
     .terminal-btn {
-        width: 0.75rem;
-        height: 0.75rem;
+        width: 0.65rem;
+        height: 0.65rem;
         border-radius: 50%;
         background-color: var(--accent);
         display: inline-block;
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-controls {
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+        }
+        
+        .terminal-btn {
+            width: 0.75rem;
+            height: 0.75rem;
+        }
     }
 
     .terminal-btn:nth-child(2) {
@@ -337,7 +447,17 @@ const { site, title, tagline } = Astro.props;
         font-size: 0.85rem;
         line-height: 1.4;
         color: var(--text-secondary);
-        margin-right: 1rem;
+        width: 100%;
+        text-align: center;
+        padding: 0.25rem 0;
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
     }
 
     .terminal-header-title {
@@ -345,9 +465,28 @@ const { site, title, tagline } = Astro.props;
         font-size: 1rem;
         color: var(--accent);
         margin: 0;
-        flex: 1;
         margin-left: 10px;
         text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-header-title {
+            margin-left: 15px;
+        }
+    }
+    
+    .terminal-header-title h3 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+    
+    @media (max-width: 767px) {
+        .terminal-header-title h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
     }
 
     .terminal-prompt {
@@ -383,9 +522,7 @@ const { site, title, tagline } = Astro.props;
         transition: all 0.2s ease-out;
     }
     .logo:hover {
-        animation: buzz 0.32s linear 2;
-        transform: scale(1.1) translateZ(0);
-        filter: brightness(1.1);
+
     }
     @keyframes buzz {
         50% {

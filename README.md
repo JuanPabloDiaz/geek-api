@@ -26,7 +26,7 @@ This project provides a searchable and filterable directory of Geek APIs, featur
 - **Deployment**: Netlify
 - **Data**: JSON-based API directory
 
-## Run Commands
+## 🛠️ Available Scripts
 
 ```bash
 pnpm install
@@ -104,13 +104,6 @@ The API data is stored in `src/data/resources.json` with the following structure
   ]
 }
 ```
-
-## 🛠️ Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build locally
-- `npm run clean` - Clean build artifacts and dependencies
 
 ## 📝 Adding New APIs
 

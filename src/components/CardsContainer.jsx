@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Card from "./Card";
 import "./CardsContainer.css";
 // import data from "../data/tools.json";
@@ -32,9 +32,6 @@ export default function CardsContainer({ filter, searchTerm = "" }) {
           })
         : categoryFiltered;
 
-    // Update results count
-    setTimeout(() => setResultsCount(searchFiltered.length), 0);
-
     // Map and sort the results
     return searchFiltered
       .map((item) => ({
@@ -50,6 +47,11 @@ export default function CardsContainer({ filter, searchTerm = "" }) {
       }))
       .sort((a, b) => a.title.localeCompare(b.title));
   }, [filter, searchTerm]);
+
+  // Update results count in useEffect instead of during render
+  useEffect(() => {
+    setResultsCount(filteredCards.length);
+  }, [filteredCards]);
 
   return (
     <section>
