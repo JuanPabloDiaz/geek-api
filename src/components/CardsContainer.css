@@ -1,8 +1,15 @@
 .link-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(32ch, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--spacing-05);
   padding: var(--spacing-00);
+}
+
+@media (max-width: 480px) {
+  .link-card-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-04);
+  }
 }
 
 .dashboard-header {

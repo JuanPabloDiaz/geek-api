@@ -24,6 +24,17 @@
   padding: 0.5rem 1rem;
 }
 
+@media (max-width: 767px) {
+  .terminal-search {
+    order: 3;
+    width: 100%;
+  }
+  
+  .terminal-search .search-form {
+    margin: 0.5rem -1rem 0;
+  }
+}
+
 .search-input-container {
   display: flex;
   align-items: center;

@@ -9,6 +9,12 @@
   border-bottom: 2px solid var(--accent);
 }
 
+@media (max-width: 767px) {
+  .category-nav-container {
+    top: 9rem; /* Adjusted for mobile header height */
+  }
+}
+
 .category-nav {
   width: 100%;
   box-shadow: inset 0px -1px 0px var(--accent);
