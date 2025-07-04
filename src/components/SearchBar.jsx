@@ -31,7 +31,9 @@ export default function SearchBar({ onSearch = null }) {
       try {
         sessionStorage.setItem("globalSearchTerm", value);
         // Dispatch a custom event that Dashboard can listen for
-        window.dispatchEvent(new CustomEvent("globalSearch", { detail: value }));
+        window.dispatchEvent(
+          new CustomEvent("globalSearch", { detail: value }),
+        );
       } catch (error) {
         // Handle cases where sessionStorage might not be available
         console.warn("SessionStorage not available:", error);

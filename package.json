@@ -1,7 +1,9 @@
 {
-  "name": "astro-api",
-  "version": "2.05.0",
-  "rhyver": "v2.25Q1.05.0",
+  "name": "geek-api",
+  "version": "1.0.0",
+  "description": "Geek API",
+  "author": "Juan Diaz",
+  "license": "MIT",
   "type": "module",
   "private": false,
   "main": "src/data/resources.json",
@@ -14,7 +16,7 @@
     "build": "astro build",
     "preview": "astro dev",
     "astro": "astro",
-    "clean": "rm -rf .astro node_modules dist",
+    "clean": "rm -rf .astro node_modules dist && pnpm install",
     "format": "prettier --write ."
   },
   "dependencies": {
