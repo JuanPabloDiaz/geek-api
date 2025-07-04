@@ -138,8 +138,8 @@ const { site, title, tagline, description } = Astro.props;
     }
     .terminal-container {
         max-width: 1400px;
-        margin: 1rem auto;
         border: 1px solid var(--accent);
+        margin: 0rem auto;
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
@@ -307,6 +307,7 @@ const { site, title, tagline, description } = Astro.props;
         position: sticky;
         top: 0;
         z-index: 1000;
+        margin-bottom: 0;
     }
 
     .terminal-header {
@@ -316,7 +317,8 @@ const { site, title, tagline, description } = Astro.props;
         background-color: var(--background-secondary);
         border-top-left-radius: 0.5rem;
         border-top-right-radius: 0.5rem;
-        border-bottom: 1px solid var(--accent);
+        border-bottom: none;
+        margin-bottom: 0;
     }
     
     @media (min-width: 768px) {
@@ -366,7 +368,7 @@ const { site, title, tagline, description } = Astro.props;
     
     .terminal-tagline-container {
         display: flex;
-        padding: 0.5rem 0;
+        padding: 0
         justify-content: center;
     }
     
@@ -378,7 +380,7 @@ const { site, title, tagline, description } = Astro.props;
     
     @media (min-width: 768px) {
         .terminal-tagline-container {
-            padding: 0.75rem 0;
+            padding: 0;
             background-color: rgba(0, 0, 0, 0.1);
         }
     }

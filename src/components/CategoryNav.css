@@ -12,7 +12,7 @@
 
 @media (max-width: 767px) {
   .category-nav-container {
-    top: 9rem; /* Adjusted for mobile header height */
+    top: 0;
   }
 }
 
