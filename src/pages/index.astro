@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import "@new-ui/foundations";
+import Dashboard from "../components/Dashboard";
+---
+
+<Layout
+  site="Public API"
+  title="Public APIs for Developers"
+  tagline="MASSIVE list of public APIs for developers."
+>
+  <main>
+    <Dashboard client:load category='all' />
+  </main>
+</Layout>
