@@ -1,12 +1,13 @@
 .category-nav-container {
   position: sticky;
-  top: 7.5rem; /* Ajustado para que aparezca justo debajo del header */
+  top: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 998;
   background-color: var(--background);
   -webkit-backdrop-filter: blur(0.5rem);
   backdrop-filter: blur(0.5rem);
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
+  margin-top: -1px; /* Para eliminar cualquier espacio entre el header y la barra */
 }
 
 @media (max-width: 767px) {
@@ -17,18 +18,18 @@
 
 .category-nav {
   width: 100%;
-  box-shadow: inset 0px -1px 0px var(--accent);
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
   display: flex;
   align-items: center;
-  background-color: var(--background-secondary);
+  background-color: var(--background);
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   overflow: scroll hidden;
-  padding: 0.25rem 0;
+  padding: 0;
+  border-top: 1px solid var(--accent);
 }
 
 .category-nav::-webkit-scrollbar {

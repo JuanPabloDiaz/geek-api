@@ -312,16 +312,16 @@ const { site, title, tagline, description } = Astro.props;
     .terminal-header {
         display: flex;
         flex-direction: column;
-        padding: 0.5rem 0.75rem;
+        padding: 0.5rem 0.75rem 0;
         background-color: var(--background-secondary);
         border-top-left-radius: 0.5rem;
         border-top-right-radius: 0.5rem;
         border-bottom: 1px solid var(--accent);
     }
-
+    
     @media (min-width: 768px) {
         .terminal-header {
-            padding: 0.75rem 1rem;
+            padding: 0.5rem 0 0;
         }
     }
 
@@ -329,9 +329,15 @@ const { site, title, tagline, description } = Astro.props;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: space-between;
         width: 100%;
         margin-bottom: 0;
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-header-top {
+            justify-content: space-between;
+            padding: 0.25rem 0;
+        }
     }
 
     .terminal-logo-container {
@@ -346,14 +352,34 @@ const { site, title, tagline, description } = Astro.props;
         gap: 0.5rem;
     }
     
+    @media (min-width: 768px) {
+        .terminal-logo-container {
+            flex: 0 0 auto;
+            margin-left: 1rem;
+        }
+        
+        .terminal-search-container {
+            flex: 0 0 auto;
+            margin-right: 1rem;
+        }
+    }
+    
     .terminal-tagline-container {
         display: flex;
         padding: 0.5rem 0;
+        justify-content: center;
     }
     
     @media (max-width: 767px) {
         .terminal-tagline-container {
             display: none;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-tagline-container {
+            padding: 0.75rem 0;
+            background-color: rgba(0, 0, 0, 0.1);
         }
     }
 
@@ -383,6 +409,7 @@ const { site, title, tagline, description } = Astro.props;
     .terminal-controls {
         display: flex;
         gap: 0.4rem;
+        padding: 0.5rem 0.75rem;
     }
 
     .terminal-btn {
@@ -392,12 +419,13 @@ const { site, title, tagline, description } = Astro.props;
         background-color: var(--accent);
         display: inline-block;
     }
-
+    
     @media (min-width: 768px) {
         .terminal-controls {
             gap: 0.5rem;
+            padding: 0.75rem 1rem;
         }
-
+        
         .terminal-btn {
             width: 0.75rem;
             height: 0.75rem;
@@ -420,7 +448,14 @@ const { site, title, tagline, description } = Astro.props;
         width: 100%;
         text-align: center;
         padding: 0.25rem 0;
-        border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
     }
 
     .terminal-header-title {
@@ -432,6 +467,12 @@ const { site, title, tagline, description } = Astro.props;
         text-decoration: none;
         display: flex;
         align-items: center;
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-header-title {
+            margin-left: 15px;
+        }
     }
     
     .terminal-header-title h3 {
