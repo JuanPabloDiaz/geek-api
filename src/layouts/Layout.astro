@@ -6,9 +6,10 @@ export interface Props {
     site: string;
     title: string;
     tagline: string;
+    description: string;
 }
 
-const { site, title, tagline } = Astro.props;
+const { site, title, tagline, description } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,11 +17,16 @@ const { site, title, tagline } = Astro.props;
     <head>
         <ClientRouter />
         <meta charset="UTF-8" />
+        <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/api.png" />
         <meta name="generator" content={Astro.generator} />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
         <title>{site} — {title}</title>
         <meta property="og:title" content="Geek APIs" />
+        <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://geek-api.jpdiaz.dev" />
 
@@ -46,11 +52,12 @@ const { site, title, tagline } = Astro.props;
                             <span class="terminal-btn"></span>
                             <span class="terminal-btn"></span>
                         </div>
-                        <div class="terminal-title-container">
-                            <a href="/" class="terminal-header-title logo">
+                        <div class="terminal-logo-container">
+                            <a href="/" class="terminal-header-title">
                                 <h3>{site} </h3>
                             </a>
-                            <div class="terminal-title">{tagline}</div>
+                        </div>
+                        <div class="terminal-search-container">
                             <div class="btn-group">
                                 <button
                                     class="theme-toggle"
@@ -62,10 +69,13 @@ const { site, title, tagline } = Astro.props;
                                 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path fill="currentColor" fill-rule="evenodd" d="M277.333 405.333v85.333h-42.667v-85.333zm99.346-58.824l60.34 60.34l-30.17 30.17l-60.34-60.34zm-241.359 0l30.17 30.17l-60.34 60.34l-30.17-30.17zM256 139.353c64.422 0 116.647 52.224 116.647 116.647c0 64.422-52.225 116.647-116.647 116.647A116.427 116.427 0 0 1 139.352 256c0-64.423 52.225-116.647 116.648-116.647m0 42.666c-40.859 0-73.981 33.123-73.981 74.062a73.76 73.76 0 0 0 21.603 52.296c13.867 13.867 32.685 21.64 52.378 21.603zm234.666 52.647v42.667h-85.333v-42.667zm-384 0v42.667H21.333v-42.667zM105.15 74.98l60.34 60.34l-30.17 30.17l-60.34-60.34zm301.7 0l30.169 30.17l-60.34 60.34l-30.17-30.17zM277.332 21.333v85.333h-42.667V21.333z"/></svg>
                                 </button>
                             </div>
+                            <div class="terminal-search">
+                                <SearchBar client:idle />
+                            </div>
                         </div>
-                        <div class="terminal-search">
-                            <SearchBar client:load />
-                        </div>
+                    </div>
+                    <div class="terminal-tagline-container">
+                        <div class="terminal-title">{tagline}</div>
                     </div>
                 </header>
             </div>
@@ -95,18 +105,6 @@ const { site, title, tagline } = Astro.props;
     </body>
 </html>
 <style is:global>
-    @font-face {
-        font-family: "Fira Code";
-        font-style: normal;
-        font-weight: 400;
-        src: url("https://fonts.gstatic.com/s/firacode/v21/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sJVD7MOzlojwUKaJO.woff2") format("woff2");
-    }
-    @font-face {
-        font-family: "Fira Code";
-        font-style: normal;
-        font-weight: 700;
-        src: url("https://fonts.gstatic.com/s/firacode/v21/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_NprJVD7MOzlojwUKaJO.woff2") format("woff2");
-    }
     :root {
         /* Old-school developer theme */
         --background: #002b36;
@@ -158,7 +156,7 @@ const { site, title, tagline } = Astro.props;
         background-color: var(--background);
         min-height: 50vh;
     }
-    
+
     @media (min-width: 768px) {
         .terminal-content {
             padding: var(--spacing-06);
@@ -233,8 +231,8 @@ const { site, title, tagline } = Astro.props;
         z-index: 999;
         --icon-fill: var(--icon-secondary);
         --icon-fill-hover: var(--icon-secondary);
-        width: var(--spacing-09);
-        height: var(--spacing-09);
+        width: var(--spacing-07);
+        height: var(--spacing-07);
         background: none;
         border: none;
         padding: var(--spacing-00);
@@ -246,6 +244,11 @@ const { site, title, tagline } = Astro.props;
         justify-content: center;
         align-items: center;
         border-radius: var(--spacing-02);
+        
+        @media (min-width: 768px) {
+            width: var(--spacing-09);
+            height: var(--spacing-09);
+        }
 
         @nest [data-theme="dark"] & {
             --icon-fill: var(--icon-secondary);
@@ -264,7 +267,7 @@ const { site, title, tagline } = Astro.props;
         background-color: var(--background-secondary);
         border-top: 1px solid var(--accent);
     }
-    
+
     @media (min-width: 768px) {
         .terminal-footer {
             padding: 1rem;
@@ -315,7 +318,7 @@ const { site, title, tagline } = Astro.props;
         border-top-right-radius: 0.5rem;
         border-bottom: 1px solid var(--accent);
     }
-    
+
     @media (min-width: 768px) {
         .terminal-header {
             padding: 0.75rem 1rem;
@@ -326,15 +329,32 @@ const { site, title, tagline } = Astro.props;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: space-between;
         width: 100%;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0;
     }
 
-    .terminal-title-container {
+    .terminal-logo-container {
         display: flex;
         align-items: center;
-        flex-wrap: wrap;
-        flex: 1;
+        padding: 0.5rem 0;
+    }
+    
+    .terminal-search-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .terminal-tagline-container {
+        display: flex;
+        padding: 0.5rem 0;
+    }
+    
+    @media (max-width: 767px) {
+        .terminal-tagline-container {
+            display: none;
+        }
     }
 
     .terminal-search {
@@ -344,8 +364,19 @@ const { site, title, tagline } = Astro.props;
     
     @media (min-width: 768px) {
         .terminal-search {
-            width: 30%;
-            padding: 1rem;
+            width: auto;
+            min-width: 200px;
+            padding: 0 0.5rem;
+        }
+    }
+    
+    .terminal-search-container .btn-group {
+        margin-right: 0.25rem;
+    }
+    
+    @media (min-width: 768px) {
+        .terminal-search-container .btn-group {
+            margin-right: 0.5rem;
         }
     }
 
@@ -361,12 +392,12 @@ const { site, title, tagline } = Astro.props;
         background-color: var(--accent);
         display: inline-block;
     }
-    
+
     @media (min-width: 768px) {
         .terminal-controls {
             gap: 0.5rem;
         }
-        
+
         .terminal-btn {
             width: 0.75rem;
             height: 0.75rem;
@@ -386,15 +417,10 @@ const { site, title, tagline } = Astro.props;
         font-size: 0.85rem;
         line-height: 1.4;
         color: var(--text-secondary);
-        margin-right: 1rem;
-    }
-    
-    @media (max-width: 767px) {
-        .terminal-title {
-            font-size: 0.75rem;
-            margin-right: 0.5rem;
-            flex: 1;
-        }
+        width: 100%;
+        text-align: center;
+        padding: 0.25rem 0;
+        border-top: 1px solid rgba(255,255,255,0.05);
     }
 
     .terminal-header-title {
@@ -404,6 +430,13 @@ const { site, title, tagline } = Astro.props;
         margin: 0;
         margin-left: 10px;
         text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+    
+    .terminal-header-title h3 {
+        margin: 0;
+        font-size: 1.2rem;
     }
     
     @media (max-width: 767px) {
@@ -446,7 +479,7 @@ const { site, title, tagline } = Astro.props;
         transition: all 0.2s ease-out;
     }
     .logo:hover {
-        
+
     }
     @keyframes buzz {
         50% {

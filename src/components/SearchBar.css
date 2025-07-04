@@ -6,6 +6,7 @@
 /* Estilos específicos cuando está en el header */
 .terminal-search .search-container {
   margin-bottom: 0;
+  width: 100%;
 }
 
 .search-form {
@@ -20,18 +21,19 @@
 .terminal-search .search-form {
   background-color: rgba(0, 0, 0, 0.15);
   border-width: 1px 0 1px 0;
-  margin: 0 -1rem;
-  padding: 0.5rem 1rem;
+  margin: 0;
+  padding: 0.5rem;
+  border-radius: 4px;
 }
 
 @media (max-width: 767px) {
   .terminal-search {
-    order: 3;
     width: 100%;
   }
   
   .terminal-search .search-form {
-    margin: 0.5rem -1rem 0;
+    margin: 0;
+    padding: 0.4rem;
   }
 }
 
@@ -52,15 +54,22 @@
 }
 
 .search-input {
-  background: transparent;
+  background-color: transparent;
   border: none;
   color: var(--text-primary);
   font-family: var(--body-copy);
-  font-size: 1rem;
-  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  padding: 0.4rem;
   width: 100%;
   outline: none;
   caret-color: var(--accent);
+}
+
+@media (min-width: 768px) {
+  .search-input {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
 }
 
 .search-input::placeholder {

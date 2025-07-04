@@ -5,18 +5,32 @@ import CardsContainer from "./CardsContainer";
 export default function Dashboard({ category }) {
   const [currentCategory, setCurrentCategory] = useState(category);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Prevent hydration issues
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     setCurrentCategory(category);
     // Reset search when category changes
     setSearchTerm("");
 
+    // Only run browser-specific code after mounting
+    if (!isMounted) return;
+
     // Check if there's a global search term in sessionStorage
-    const globalSearchTerm = sessionStorage.getItem("globalSearchTerm");
-    if (globalSearchTerm) {
-      setSearchTerm(globalSearchTerm);
-      // Clear it after using it
-      sessionStorage.removeItem("globalSearchTerm");
+    try {
+      const globalSearchTerm = sessionStorage.getItem("globalSearchTerm");
+      if (globalSearchTerm) {
+        setSearchTerm(globalSearchTerm);
+        // Clear it after using it
+        sessionStorage.removeItem("globalSearchTerm");
+      }
+    } catch (error) {
+      // Handle cases where sessionStorage might not be available
+      console.warn("SessionStorage not available:", error);
     }
 
     // Listen for global search events
@@ -30,7 +44,7 @@ export default function Dashboard({ category }) {
     return () => {
       window.removeEventListener("globalSearch", handleGlobalSearch);
     };
-  }, [category]);
+  }, [category, isMounted]);
 
   const handleSearch = (term) => {
     setSearchTerm(term);
