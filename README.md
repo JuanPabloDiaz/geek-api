@@ -1,10 +1,10 @@
-# 🚀 Public API (Astro)
+# 🚀 Geek APIs
 
-A comprehensive directory of public APIs for developers, built with Astro and React.
+A comprehensive directory of Geek APIs for developers, built with Astro and React.
 
 ## 📋 Overview
 
-This project provides a searchable and filterable directory of public APIs, featuring over 1,400+ APIs across various categories. Each API listing includes essential information like authentication requirements, HTTPS support, and CORS availability.
+This project provides a searchable and filterable directory of Geek APIs, featuring over 1,400+ APIs across various categories. Each API listing includes essential information like authentication requirements, HTTPS support, and CORS availability.
 
 ## ✨ Features
 

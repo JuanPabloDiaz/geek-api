@@ -1,1 +1,1 @@
-https://public-api.jpdiaz.dev
+https://geek-api.jpdiaz.dev

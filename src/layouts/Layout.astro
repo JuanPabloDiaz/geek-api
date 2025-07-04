@@ -20,9 +20,9 @@ const { site, title, tagline } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/api.png" />
         <meta name="generator" content={Astro.generator} />
         <title>{site} — {title}</title>
-        <meta property="og:title" content="Public API" />
+        <meta property="og:title" content="Geek APIs" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://public-api.jpdiaz.dev" />
+        <meta property="og:url" content="https://geek-api.jpdiaz.dev" />
 
         <!-- Google tag (gtag.js) -->
         <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-XXX"></script>
@@ -48,7 +48,7 @@ const { site, title, tagline } = Astro.props;
                         </div>
                         <div class="terminal-title-container">
                             <a href="/" class="terminal-header-title">
-                                <h3>{title}</h3>
+                                <h3>{site} </h3>
                             </a>
                             <div class="terminal-title">{tagline}</div>
                             <div class="terminal-search">
@@ -146,7 +146,7 @@ const { site, title, tagline } = Astro.props;
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
     }
-    
+
     .terminal-content {
         padding: var(--spacing-06);
         background-color: var(--background);
@@ -252,13 +252,13 @@ const { site, title, tagline } = Astro.props;
         background-color: var(--background-secondary);
         border-top: 1px solid var(--accent);
     }
-    
+
     .terminal-cursor {
         color: var(--accent);
         font-weight: bold;
         animation: blink 1s step-end infinite;
     }
-    
+
     @keyframes blink {
         0%, 100% { opacity: 1; }
         50% { opacity: 0; }
@@ -275,7 +275,7 @@ const { site, title, tagline } = Astro.props;
             margin: var(--spacing-06);
         }
     }
-    
+
     /* Terminal styling */
     .sticky-container {
         position: sticky;
@@ -292,30 +292,30 @@ const { site, title, tagline } = Astro.props;
         border-top-right-radius: 0.5rem;
         border-bottom: 1px solid var(--accent);
     }
-    
+
     .terminal-header-top {
         display: flex;
         align-items: center;
         width: 100%;
         margin-bottom: 0.75rem;
     }
-    
+
     .terminal-title-container {
         display: flex;
         align-items: center;
         flex: 1;
     }
-    
+
     .terminal-search {
         width: 20%;
         padding: 1rem;
     }
-    
+
     .terminal-controls {
         display: flex;
         gap: 0.5rem;
     }
-    
+
     .terminal-btn {
         width: 0.75rem;
         height: 0.75rem;
@@ -323,15 +323,15 @@ const { site, title, tagline } = Astro.props;
         background-color: var(--accent);
         display: inline-block;
     }
-    
+
     .terminal-btn:nth-child(2) {
         background-color: var(--link);
     }
-    
+
     .terminal-btn:nth-child(3) {
         background-color: var(--text-secondary);
     }
-    
+
     .terminal-title {
         font-family: var(--body-copy);
         font-size: 0.85rem;
@@ -339,7 +339,7 @@ const { site, title, tagline } = Astro.props;
         color: var(--text-secondary);
         margin-right: 1rem;
     }
-    
+
     .terminal-header-title {
         font-family: var(--body-copy);
         font-size: 1rem;
@@ -349,13 +349,13 @@ const { site, title, tagline } = Astro.props;
         margin-left: 10px;
         text-decoration: none;
     }
-    
+
     .terminal-prompt {
         color: var(--accent);
         margin-right: 0.5rem;
         font-weight: bold;
     }
-    
+
     h1.title {
         background-color: var(--background-secondary);
         border: 1px solid var(--accent);
@@ -366,7 +366,7 @@ const { site, title, tagline } = Astro.props;
         width: 100%;
         box-sizing: border-box;
     }
-    
+
     p.description-text {
         background-color: var(--background-secondary);
         border: 1px solid var(--accent);
